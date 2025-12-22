@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import CustomButton from '../components/CustomButton';
+import CustomButton from '@components/CustomButton';
 import { Text } from 'react-native-paper';
 
 const SettingsScreen: React.FC = () => {

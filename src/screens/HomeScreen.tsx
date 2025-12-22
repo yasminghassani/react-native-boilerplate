@@ -7,11 +7,11 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import CustomCard from '../components/CustomCard';
+import CustomCard from '@components/CustomCard';
 import { Button } from 'react-native-paper';
-import CustomButton from '../components/CustomButton';
+import CustomButton from '@components/CustomButton';
 import { launchImageLibrary } from 'react-native-image-picker';
-import { checkPhotoPermissionIOS } from '../utils/permission';
+import { checkPhotoPermissionIOS } from '@utils/permission';
 
 type User = {
   id: number;
