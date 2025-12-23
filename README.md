@@ -8,9 +8,10 @@ This is a **React Native** project bootstrapped using [`@react-native-community/
 
 > **Prerequisites**: 
 >
-> * Ruby 3.2
 > * Node v25
-> * CocoaPods v1.16.2
+> * CocoaPods v1.16.2 -> iOS
+> * Ruby 3.2 -> iOS
+> * Java v17 -> Android
 >
 > Make sure you have completed the official [Set Up Your Environment](https://reactnative.dev/docs/environment-setup) guide before continuing.
 
