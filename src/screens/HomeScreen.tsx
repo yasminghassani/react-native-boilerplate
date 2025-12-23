@@ -26,7 +26,6 @@ const HomeScreen: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [imageUri, setImageUri] = useState<string | null>(null);
 
-  // Fetch users once
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(res => res.json())
@@ -38,10 +37,9 @@ const HomeScreen: React.FC = () => {
 
   if (loading) return <ActivityIndicator size='large' style={{ flex: 1 }} />;
 
-  // Async function for opening gallery with permission check
   const openGallery = async () => {
     const hasPermission = await checkPhotoPermissionIOS();
-    if (!hasPermission) return
+    if (!hasPermission) return;
 
     launchImageLibrary({ mediaType: 'photo', selectionLimit: 1 }, response => {
       if (response.didCancel) return;
@@ -57,19 +55,23 @@ const HomeScreen: React.FC = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <CustomCard
-        title='Home Card'
-        subtitle='Card Subtitle'
-        content='Welcome to the Home Screen!'
-        buttonText='Press Me'
-        onPress={() => console.log('Home Card Pressed')}
-      />
+      {/* Card Section */}
+      <View style={styles.cardContainer}>
+        <CustomCard
+          title='Home Card'
+          subtitle='Card Subtitle'
+          content='Welcome to the Home Screen!'
+          buttonText='Press Me'
+          onPress={() => console.log('Home Card Pressed')}
+        />
+      </View>
 
-      <View style={{ padding: 20, alignItems: 'center' }}>
+      {/* Gallery Section */}
+      <View style={styles.galleryContainer}>
         <CustomButton
           text='Open gallery'
           iconName='camera'
-          onPress={openGallery} // async handled inside
+          onPress={openGallery}
           mode='contained'
           color='#6200ee'
         />
@@ -82,15 +84,19 @@ const HomeScreen: React.FC = () => {
         )}
       </View>
 
-      {/* Hidden sections, you can toggle display later */}
-      <View style={{ padding: 20, display: 'none' }}>
-        <Text>Count: {count}</Text>
+      {/* Counter Section */}
+      <View style={styles.counterContainer}>
+        <Text style={styles.counterText}>Count: {count}</Text>
         <Button onPress={() => setCount(count + 1)}>Increase</Button>
       </View>
 
-      <View style={{ padding: 20, display: 'none' }}>
+      {/* Users Section */}
+      <View style={styles.usersContainer}>
         {users.map(user => (
-          <Text key={user.id}>{user.name}</Text>
+          <View key={user.id} style={styles.userCard}>
+            <Text style={styles.userName}>{user.name}</Text>
+            <Text style={styles.userEmail}>{user.email}</Text>
+          </View>
         ))}
       </View>
     </ScrollView>
@@ -102,11 +108,50 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'center',
   },
+  cardContainer: {
+    width: '100%',
+    marginBottom: 20,
+  },
+  galleryContainer: {
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
   selectedImage: {
     width: 300,
     height: 300,
     marginTop: 20,
     borderRadius: 10,
+  },
+  counterContainer: {
+    width: '100%',
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  counterText: {
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  usersContainer: {
+    width: '100%',
+    flexDirection: 'row', // row or column layout
+    flexWrap: 'wrap', // like CSS grid wrapping
+    justifyContent: 'space-between',
+  },
+  userCard: {
+    width: '48%', // two items per row
+    padding: 10,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    backgroundColor: '#f9f9f9',
+  },
+  userName: {
+    fontWeight: 'bold',
+  },
+  userEmail: {
+    color: '#555',
   },
 });
 
