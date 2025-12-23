@@ -31,6 +31,8 @@ target 'MyReactNativeApp' do
 
   use_react_native!(
     :path => config[:reactNativePath],
+    :fabric_enabled => true, # enable Fabric
+    :hermes_enabled => true, # Hermes recommended with Fabric
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
