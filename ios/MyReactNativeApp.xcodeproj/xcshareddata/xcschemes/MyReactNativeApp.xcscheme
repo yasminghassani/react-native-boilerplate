@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BlueprintIdentifier = "CCB150DF2EFE25C5008E451D"
                BuildableName = "MyReactNativeAppTests.xctest"
                BlueprintName = "MyReactNativeAppTests"
                ReferencedContainer = "container:MyReactNativeApp.xcodeproj">

@@ -1,0 +1,29 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Run iOS tests on simulator"
+  lane :tests do
+    run_tests(
+      workspace: "MyReactNativeApp.xcworkspace",  # Use workspace if you use CocoaPods
+      scheme: "MyReactNativeApp",                 # Main app scheme (already shared)
+      devices: ["iPhone 17 Pro"],                 # Replace with simulator you have
+      clean: true,                                # Clean build before testing
+      code_coverage: true,                        # Optional, generates coverage report
+    )
+  end
+end
