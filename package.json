@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "ios:tests": "bundle exec fastlane ios tests",
+    "ios:tests": "cd ios && bundle exec fastlane ios tests && cd ..",
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
     "test": "jest"
