@@ -12,6 +12,9 @@ import CustomButton from '@components/CustomButton';
 import { Button } from 'react-native-paper';
 import { checkPhotoPermissionIOS } from '@utils/permission';
 import { pickImage } from '@services/ImagePickerModule';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import type { RootStackParamList } from '@navigation/RootNavigator';
 
 type User = {
   id: number;
@@ -20,7 +23,11 @@ type User = {
   email: string;
 };
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 const HomeScreen: React.FC = () => {
+  const navigation = useNavigation<NavigationProp>();
+
   const [count, setCount] = useState(0);
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -53,8 +60,11 @@ const HomeScreen: React.FC = () => {
           title="Home Card"
           subtitle="Card Subtitle"
           content="Welcome to the Home Screen!"
-          buttonText="Press Me"
-          onPress={() => console.log('Home Card Pressed')}
+          buttonText="Go to Dashboard"
+          onPress={() => {
+            console.log('Home Card Pressed'); 
+            navigation.navigate('Dashboard');
+          }}
         />
       </View>
 

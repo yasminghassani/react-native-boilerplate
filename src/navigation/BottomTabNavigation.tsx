@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '@screens/HomeScreen';
 import MapScreen from '@screens/MapScreen';
-import SettingsScreen from '@screens/SettingScreen';
+import SettingsScreen from  '@screens/SettingsScreen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export type BottomTabParamList = {

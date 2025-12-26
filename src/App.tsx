@@ -2,15 +2,15 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from './navigation/BottomTabNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import RootNavigator from '@navigation/RootNavigator'; // import root navigator
 
 const App: React.FC = () => {
   return (
     <PaperProvider>
       <NavigationContainer>
         <SafeAreaView style={styles.container}>
-          <BottomTabNavigator />
+          <RootNavigator />
         </SafeAreaView>
       </NavigationContainer>
     </PaperProvider>
