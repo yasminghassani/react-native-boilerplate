@@ -5,13 +5,13 @@ import {
   ActivityIndicator,
   Image,
   StyleSheet,
-  ScrollView,
+  ScrollView
 } from 'react-native';
 import CustomCard from '@components/CustomCard';
-import { Button } from 'react-native-paper';
 import CustomButton from '@components/CustomButton';
-import { launchImageLibrary } from 'react-native-image-picker';
+import { Button } from 'react-native-paper';
 import { checkPhotoPermissionIOS } from '@utils/permission';
+import { pickImage } from '@services/ImagePickerModule';
 
 type User = {
   id: number;
@@ -35,22 +35,14 @@ const HomeScreen: React.FC = () => {
       });
   }, []);
 
-  if (loading) return <ActivityIndicator size='large' style={{ flex: 1 }} />;
+  if (loading) return <ActivityIndicator size="large" style={{ flex: 1 }} />;
 
   const openGallery = async () => {
     const hasPermission = await checkPhotoPermissionIOS();
     if (!hasPermission) return;
 
-    launchImageLibrary({ mediaType: 'photo', selectionLimit: 1 }, response => {
-      if (response.didCancel) return;
-      if (response.errorCode) {
-        console.error(response.errorMessage);
-        return;
-      }
-
-      const uri = response.assets?.[0]?.uri;
-      if (uri) setImageUri(uri);
-    });
+    const uri = await pickImage();
+    if (uri) setImageUri(uri);
   };
 
   return (
@@ -58,10 +50,10 @@ const HomeScreen: React.FC = () => {
       {/* Card Section */}
       <View style={styles.cardContainer}>
         <CustomCard
-          title='Home Card'
-          subtitle='Card Subtitle'
-          content='Welcome to the Home Screen!'
-          buttonText='Press Me'
+          title="Home Card"
+          subtitle="Card Subtitle"
+          content="Welcome to the Home Screen!"
+          buttonText="Press Me"
           onPress={() => console.log('Home Card Pressed')}
         />
       </View>
@@ -69,17 +61,17 @@ const HomeScreen: React.FC = () => {
       {/* Gallery Section */}
       <View style={styles.galleryContainer}>
         <CustomButton
-          text='Open gallery'
-          iconName='camera'
+          text="Open gallery"
+          iconName="camera"
           onPress={openGallery}
-          mode='contained'
-          color='#6200ee'
+          mode="contained"
+          color="#6200ee"
         />
         {imageUri && (
           <Image
             source={{ uri: imageUri }}
             style={styles.selectedImage}
-            resizeMode='cover'
+            resizeMode="cover"
           />
         )}
       </View>
@@ -134,12 +126,12 @@ const styles = StyleSheet.create({
   },
   usersContainer: {
     width: '100%',
-    flexDirection: 'row', // row or column layout
-    flexWrap: 'wrap', // like CSS grid wrapping
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
   userCard: {
-    width: '48%', // two items per row
+    width: '48%',
     padding: 10,
     marginBottom: 10,
     borderWidth: 1,
