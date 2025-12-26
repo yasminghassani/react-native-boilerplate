@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,9 +39,39 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CCB150C92EFE2330008E451D /* MyReactNativeAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MyReactNativeAppTests; sourceTree = "<group>"; };
-		CCB150E12EFE25C5008E451D /* MyReactNativeAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MyReactNativeAppTests; sourceTree = "<group>"; };
-		CCB150EE2EFE2A9F008E451D /* MyReactNativeAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MyReactNativeAppTests; sourceTree = "<group>"; };
+		CCB150C92EFE2330008E451D /* MyReactNativeAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = MyReactNativeAppTests;
+			sourceTree = "<group>";
+		};
+		CCB150E12EFE25C5008E451D /* MyReactNativeAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = MyReactNativeAppTests;
+			sourceTree = "<group>";
+		};
+		CCB150EE2EFE2A9F008E451D /* MyReactNativeAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = MyReactNativeAppTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,8 +197,6 @@
 				CCB150EE2EFE2A9F008E451D /* MyReactNativeAppTests */,
 			);
 			name = MyReactNativeAppTests;
-			packageProductDependencies = (
-			);
 			productName = MyReactNativeAppTests;
 			productReference = CCB150ED2EFE2A9F008E451D /* MyReactNativeAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -255,13 +283,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyReactNativeApp/Pods-MyReactNativeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyReactNativeApp/Pods-MyReactNativeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -298,13 +322,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyReactNativeApp/Pods-MyReactNativeApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyReactNativeApp/Pods-MyReactNativeApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
