@@ -11,8 +11,8 @@ const DashboardScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp>();
 
   return (
-    <View>
-      <Appbar.Header>
+    <View style={styles.container}>
+      <Appbar.Header statusBarHeight={0}>
         <Appbar.BackAction
           onPress={() => {
             navigation.goBack();
@@ -20,7 +20,7 @@ const DashboardScreen: React.FC = () => {
         />
         <Appbar.Content title='Dashboard' />
       </Appbar.Header>
-      <View style={styles.container}>
+      <View style={styles.containerAfterAppBar}>
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.headerText}>Dashboard</Text>
@@ -63,6 +63,9 @@ const DashboardScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  containerAfterAppBar: {
     flex: 1,
     padding: 20,
     backgroundColor: '#f2f2f2',
