@@ -4,6 +4,7 @@ import HomeScreen from '@screens/HomeScreen';
 import MapScreen from '@screens/MapScreen';
 import SettingsScreen from  '@screens/SettingsScreen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { isIOS } from '@utils/general';
 
 export type BottomTabParamList = {
   Home: undefined;
@@ -21,7 +22,7 @@ const BottomTabNavigator: React.FC = () => {
         tabBarIcon: ({ color, size }) => {
           let iconName: string = '';
           if (route.name === 'Home') iconName = 'folder';
-          else if (route.name === 'Map') iconName = 'map';
+          else if (route.name === 'Map' && isIOS) iconName = 'map';
           else if (route.name === 'Settings') iconName = 'settings';
           return <MaterialIcons name={iconName} size={size} color={color} />;
         },
@@ -30,7 +31,7 @@ const BottomTabNavigator: React.FC = () => {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Map" component={MapScreen} />
+      {isIOS && <Tab.Screen name="Map" component={MapScreen} />}
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
