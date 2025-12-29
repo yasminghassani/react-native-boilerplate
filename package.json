@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
+    "android:dev": "react-native run-android",
     "ios:install": "cd ios && bundle install && bundle exec pod install && cd ..",
     "ios:dev": "react-native run-ios",
     "ios:tests": "cd ios && bundle exec fastlane ios tests && cd ..",
