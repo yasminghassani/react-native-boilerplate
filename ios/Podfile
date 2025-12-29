@@ -26,6 +26,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
+
 target 'MyReactNativeApp' do
   config = use_native_modules!
 
