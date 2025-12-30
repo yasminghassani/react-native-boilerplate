@@ -19,11 +19,36 @@ platform :ios do
   desc "Run iOS tests on simulator"
   lane :tests do
     run_tests(
-      workspace: "MyReactNativeApp.xcworkspace",  # Use workspace if you use CocoaPods
-      scheme: "MyReactNativeApp",                 # Main app scheme (already shared)
-      devices: ["iPhone 17 Pro"],                 # Replace with simulator you have
-      clean: true,                                # Clean build before testing
-      code_coverage: true,                        # Optional, generates coverage report
+      workspace: "MyReactNativeApp.xcworkspace",
+      scheme: "MyReactNativeApp",
+      devices: ["iPhone 17 Pro"],
+      clean: true,
+      code_coverage: true
+    )
+  end
+
+  desc "Build and upload to TestFlight"
+  lane :beta do
+    # Optional but recommended
+    tests
+
+    # Increment build number
+    increment_build_number(
+      xcodeproj: "MyReactNativeApp.xcodeproj"
+    )
+
+    # Build archive for App Store
+    build_app(
+      workspace: "MyReactNativeApp.xcworkspace",
+      scheme: "MyReactNativeApp",
+      export_method: "app-store",
+      clean: true
+    )
+
+    # Upload to TestFlight
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
     )
   end
 end
+
